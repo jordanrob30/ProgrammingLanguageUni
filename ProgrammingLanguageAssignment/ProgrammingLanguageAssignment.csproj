@@ -49,6 +49,8 @@
     <Compile Include="Canvas.cs" />
     <Compile Include="Commands\Circle.cs" />
     <Compile Include="Commands\Clear.cs" />
+    <Compile Include="Commands\Fill.cs" />
+    <Compile Include="Commands\PenColour.cs" />
     <Compile Include="Commands\Reset.cs" />
     <Compile Include="Commands\Triangle.cs" />
     <Compile Include="ConditionalCommand.cs" />
@@ -90,5 +92,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

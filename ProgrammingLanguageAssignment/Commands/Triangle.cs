@@ -21,5 +21,19 @@ namespace ProgrammingLanguageAssignment
             this.width = Int32.Parse(args[0]);
             this.height = Int32.Parse(args[1]);
         }
+
+        public override string validateArguments(string[] args)
+        {
+            try
+            {
+                Int32.Parse(args[0]);
+                Int32.Parse(args[1]);
+
+                return "";
+            } catch (Exception e)
+            {
+                return "Invalid arguments, expecting triangle <width>,<height>";
+            }
+        }
     }
 }

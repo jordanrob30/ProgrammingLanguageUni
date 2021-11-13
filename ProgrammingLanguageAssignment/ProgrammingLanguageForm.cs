@@ -40,7 +40,7 @@ namespace ProgrammingLanguageAssignment
             }
         }
 
-        public void RunCommand(CommandParser commandParser)
+        public bool RunCommand(CommandParser commandParser)
         {
             Command command;
 
@@ -64,13 +64,32 @@ namespace ProgrammingLanguageAssignment
                 case "reset":
                     command = new Reset();
                     break;
+                case "fill":
+                    command = new Fill();
+                    break;
+                case "pen":
+                    command = new PenColour();
+                    break;
                 default:
-                    return;
+                    return false;
+            }
+
+            //Validate the arguments passed
+            String validationMessage = command.validateArguments(commandParser.args);
+            if (validationMessage != "")
+            {
+                errorField.Text = validationMessage;
+                return false;
+            } else
+            {
+                errorField.Text = "";
             }
 
             command.ParseArguments(commandParser.args);
             command.Execute(this.FormCanvas);
             Refresh();
+
+            return true;
         }
 
         private void runSingle_Click(object sender, EventArgs e)
@@ -79,6 +98,16 @@ namespace ProgrammingLanguageAssignment
             CommandParser commandParser = new CommandParser(CommandLine.Text);
             this.RunCommand(commandParser);
             CommandLine.Text = "";
+        }
+
+        private void runScript_Click(object sender, EventArgs e)
+        {
+            foreach(string line  in scriptCommands.Lines)
+            {
+                CommandParser commandParser = new CommandParser(line);
+                bool result = this.RunCommand(commandParser);
+                if (!result) break;
+            }
         }
     }
 }

@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 namespace ProgrammingLanguageAssignment
 {
     abstract class DrawCommand : Command
-    {
-        public String name = "";
-        public String[] args;
-
+    {     
         public DrawCommand()
         {
 
@@ -18,5 +15,6 @@ namespace ProgrammingLanguageAssignment
 
         public abstract bool Execute(Canvas canvas);
         public abstract void ParseArguments(string[] args);
+        public abstract string validateArguments(string[] args);
     }
 }

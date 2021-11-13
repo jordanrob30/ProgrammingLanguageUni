@@ -34,6 +34,7 @@ namespace ProgrammingLanguageAssignment
             this.CommandLine = new System.Windows.Forms.TextBox();
             this.runSingle = new System.Windows.Forms.Button();
             this.runScript = new System.Windows.Forms.Button();
+            this.errorField = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,12 +83,22 @@ namespace ProgrammingLanguageAssignment
             this.runScript.TabIndex = 4;
             this.runScript.Text = "Run All";
             this.runScript.UseVisualStyleBackColor = true;
+            this.runScript.Click += new System.EventHandler(this.runScript_Click);
+            // 
+            // errorField
+            // 
+            this.errorField.Location = new System.Drawing.Point(656, 431);
+            this.errorField.Name = "errorField";
+            this.errorField.ReadOnly = true;
+            this.errorField.Size = new System.Drawing.Size(513, 20);
+            this.errorField.TabIndex = 5;
             // 
             // ProgammingLanguageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1181, 641);
+            this.Controls.Add(this.errorField);
             this.Controls.Add(this.runScript);
             this.Controls.Add(this.runSingle);
             this.Controls.Add(this.CommandLine);
@@ -108,6 +119,7 @@ namespace ProgrammingLanguageAssignment
         private System.Windows.Forms.TextBox CommandLine;
         private System.Windows.Forms.Button runSingle;
         private System.Windows.Forms.Button runScript;
+        private System.Windows.Forms.TextBox errorField;
     }
 }
 

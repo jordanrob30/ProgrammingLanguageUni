@@ -13,13 +13,17 @@ namespace ProgrammingLanguageAssignment
         Graphics g;
 
         //Pen instance used for outputted data
-        Pen Pen;
+        public Pen Pen;
+
+        public Brush brush;
 
         /*
          * X and Y Postions for current instance
          */
         public int xPos = 0;
         public int yPos = 0;
+
+        public bool fill = false;
 
         public Canvas(Graphics g)
         {
@@ -47,17 +51,32 @@ namespace ProgrammingLanguageAssignment
         public void DrawSquare(int size)
         {
             g.DrawRectangle(this.Pen, this.xPos, this.yPos, this.xPos + size, this.yPos + size);
+
+            if(this.fill)
+            {
+                g.FillRectangle(this.brush, this.xPos, this.yPos, this.xPos + size, this.yPos + size);
+            }
         }
 
         public void DrawRectangle(int width, int height)
         {
             g.DrawRectangle(this.Pen, this.xPos, this.yPos, this.xPos + width, this.yPos + height);
+
+            if (this.fill)
+            {
+                g.FillRectangle(this.brush, this.xPos, this.yPos, this.xPos + width, this.yPos + height);
+            }
         }
 
 
         public void DrawCircle(int radius)
         {
             g.DrawEllipse(this.Pen, this.xPos - radius, this.yPos - radius, radius * 2, radius * 2);
+
+            if (this.fill)
+            {
+                g.FillEllipse(this.brush, this.xPos - radius, this.yPos - radius, radius * 2, radius * 2);
+            }
         }
 
         /**
@@ -68,9 +87,31 @@ namespace ProgrammingLanguageAssignment
             int originalX = this.xPos;
             int originalY = this.yPos;
 
-            this.DrawLine(this.xPos + (width / 2), this.yPos + height);
-            this.DrawLine(this.xPos - width, this.yPos);
-            this.DrawLine(originalX, originalY);
+            Point[] points = new Point[3];
+
+            points[0].X = this.xPos + (width / 2);
+            points[0].Y = this.yPos + height;
+
+            this.xPos = points[0].X;
+            this.yPos = points[0].Y;
+
+            points[1].X = this.xPos - width;
+            points[1].Y = this.yPos;
+
+            this.xPos = this.xPos - width;
+
+            points[2].X = originalX;
+            points[2].Y = originalY;
+
+            this.xPos = originalX;
+            this.yPos = originalY;
+
+            g.DrawPolygon(this.Pen, points);
+
+            if (this.fill)
+            {
+                g.FillPolygon(this.brush, points);
+            }
         }
 
         public void Clear()

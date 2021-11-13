@@ -20,5 +20,10 @@ namespace ProgrammingLanguageAssignment
         {
             
         }
+
+        public override string validateArguments(string[] args)
+        {
+            return "";
+        }
     }
 }

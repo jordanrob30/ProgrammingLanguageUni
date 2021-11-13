@@ -11,5 +11,7 @@ namespace ProgrammingLanguageAssignment
         bool Execute(Canvas canvas);
 
         void ParseArguments(String[] args);
+
+        string validateArguments(String[] args);
     }
 }

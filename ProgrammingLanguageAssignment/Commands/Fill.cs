@@ -6,33 +6,42 @@ using System.Threading.Tasks;
 
 namespace ProgrammingLanguageAssignment
 {
-    class Circle : DrawCommand
+    class Fill : DrawCommand
     {
-        public int radius;
+        public bool fill;
 
         public override bool Execute(Canvas canvas)
         {
-            canvas.DrawCircle(this.radius);
+            canvas.fill = this.fill;
 
             return true;
         }
 
         public override void ParseArguments(string[] args)
         {
-            this.radius = Int32.Parse(args[0]);
+            if(args[0] == "on")
+            {
+                this.fill = true;
+            } else
+            {
+                this.fill = false;
+            }
         }
 
         public override string validateArguments(string[] args)
         {
             try
             {
-                Int32.Parse(args[0]);
+                if(args[0] != "on" && args[0] != "off")
+                {
+                    return "Invalid arguments, expecting fill on/off";
+                }
 
                 return "";
             }
             catch (Exception e)
             {
-                return "Invalid arguments, expecting circle <radius>";
+                return "Invalid arguments, expecting fill on/off";
             }
         }
     }
