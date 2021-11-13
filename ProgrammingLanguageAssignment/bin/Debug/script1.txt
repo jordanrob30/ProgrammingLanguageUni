@@ -1,0 +1,8 @@
+clear
+moveTo 20,20
+pen red
+triangle 20,10
+moveTo 100,50
+pen blue
+fill on
+circle 20

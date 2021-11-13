@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,6 +72,7 @@ namespace ProgrammingLanguageAssignment
                     command = new PenColour();
                     break;
                 default:
+                    errorField.Text = commandParser.command + " is not a valid command";
                     return false;
             }
 
@@ -107,6 +109,36 @@ namespace ProgrammingLanguageAssignment
                 CommandParser commandParser = new CommandParser(line);
                 bool result = this.RunCommand(commandParser);
                 if (!result) break;
+            }
+        }
+
+        private void saveFile_Click(object sender, EventArgs e)
+        {
+            File.WriteAllLines(fileName.Text, scriptCommands.Lines);
+        }
+
+        private void openScript_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = "c:\\";
+            openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.FilterIndex = 2;
+            openFileDialog.RestoreDirectory = true;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
+
+                    string contents = File.ReadAllText(fileInfo.FullName);
+
+                    scriptCommands.Text = contents;
+                }
+                catch
+                {
+                    MessageBox.Show("Something went wrong please try again");
+                }
             }
         }
     }

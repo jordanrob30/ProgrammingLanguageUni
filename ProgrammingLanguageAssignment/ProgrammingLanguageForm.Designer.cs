@@ -35,6 +35,9 @@ namespace ProgrammingLanguageAssignment
             this.runSingle = new System.Windows.Forms.Button();
             this.runScript = new System.Windows.Forms.Button();
             this.errorField = new System.Windows.Forms.TextBox();
+            this.fileName = new System.Windows.Forms.TextBox();
+            this.saveFile = new System.Windows.Forms.Button();
+            this.openScript = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,11 +96,42 @@ namespace ProgrammingLanguageAssignment
             this.errorField.Size = new System.Drawing.Size(513, 20);
             this.errorField.TabIndex = 5;
             // 
+            // fileName
+            // 
+            this.fileName.Location = new System.Drawing.Point(13, 4);
+            this.fileName.Name = "fileName";
+            this.fileName.Size = new System.Drawing.Size(100, 20);
+            this.fileName.TabIndex = 6;
+            this.fileName.Text = "script1.txt";
+            // 
+            // saveFile
+            // 
+            this.saveFile.Location = new System.Drawing.Point(119, 2);
+            this.saveFile.Name = "saveFile";
+            this.saveFile.Size = new System.Drawing.Size(75, 23);
+            this.saveFile.TabIndex = 7;
+            this.saveFile.Text = "Save";
+            this.saveFile.UseVisualStyleBackColor = true;
+            this.saveFile.Click += new System.EventHandler(this.saveFile_Click);
+            // 
+            // openScript
+            // 
+            this.openScript.Location = new System.Drawing.Point(200, 2);
+            this.openScript.Name = "openScript";
+            this.openScript.Size = new System.Drawing.Size(75, 23);
+            this.openScript.TabIndex = 8;
+            this.openScript.Text = "Open";
+            this.openScript.UseVisualStyleBackColor = true;
+            this.openScript.Click += new System.EventHandler(this.openScript_Click);
+            // 
             // ProgammingLanguageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1181, 641);
+            this.Controls.Add(this.openScript);
+            this.Controls.Add(this.saveFile);
+            this.Controls.Add(this.fileName);
             this.Controls.Add(this.errorField);
             this.Controls.Add(this.runScript);
             this.Controls.Add(this.runSingle);
@@ -120,6 +154,9 @@ namespace ProgrammingLanguageAssignment
         private System.Windows.Forms.Button runSingle;
         private System.Windows.Forms.Button runScript;
         private System.Windows.Forms.TextBox errorField;
+        private System.Windows.Forms.TextBox fileName;
+        private System.Windows.Forms.Button saveFile;
+        private System.Windows.Forms.Button openScript;
     }
 }
 
