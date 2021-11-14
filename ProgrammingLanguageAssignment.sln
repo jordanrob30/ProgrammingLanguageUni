@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammingLanguageAssignment", "ProgrammingLanguageAssignment\ProgrammingLanguageAssignment.csproj", "{B3CFD8B0-6001-4C9A-B478-9C60E1DFD107}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProgrammingLanguage", "UnitTestProgrammingLanguage\UnitTestProgrammingLanguage.csproj", "{9B5B5F3F-EE91-413D-9FA7-13EFED9753B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B3CFD8B0-6001-4C9A-B478-9C60E1DFD107}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3CFD8B0-6001-4C9A-B478-9C60E1DFD107}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3CFD8B0-6001-4C9A-B478-9C60E1DFD107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B5B5F3F-EE91-413D-9FA7-13EFED9753B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B5B5F3F-EE91-413D-9FA7-13EFED9753B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B5B5F3F-EE91-413D-9FA7-13EFED9753B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B5B5F3F-EE91-413D-9FA7-13EFED9753B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

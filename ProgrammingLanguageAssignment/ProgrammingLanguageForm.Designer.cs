@@ -140,6 +140,7 @@ namespace ProgrammingLanguageAssignment
             this.Controls.Add(this.canvas);
             this.Name = "ProgammingLanguageForm";
             this.Text = "Programming Language Assignment";
+            this.Load += new System.EventHandler(this.ProgammingLanguageForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

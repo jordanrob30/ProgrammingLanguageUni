@@ -19,17 +19,27 @@ namespace ProgrammingLanguageAssignment
         public ProgammingLanguageForm()
         {
             InitializeComponent();
-            this.FormCanvas = new Canvas(Graphics.FromImage(OutputBm));
+            this.FormCanvas = new Canvas(Graphics.FromImage(this.OutputBm));
 
             Refresh();
         }
 
+        /// <summary>
+        /// Ensure objects are actually drawn
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void canvas_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics; //graphics instance of the form
             g.DrawImageUnscaled(this.OutputBm, 0, 0);
         }
 
+        /// <summary>
+        /// Allows commands to be ran on enter for single line
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CommandLine_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
@@ -41,6 +51,11 @@ namespace ProgrammingLanguageAssignment
             }
         }
 
+        /// <summary>
+        /// Runs the command determined by the commandParser
+        /// </summary>
+        /// <param name="commandParser"></param>
+        /// <returns></returns>
         public bool RunCommand(CommandParser commandParser)
         {
             Command command;
@@ -94,6 +109,11 @@ namespace ProgrammingLanguageAssignment
             return true;
         }
 
+        /// <summary>
+        /// Runs the single line command but from the button "Run"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void runSingle_Click(object sender, EventArgs e)
         {
             //Command Parser
@@ -102,6 +122,11 @@ namespace ProgrammingLanguageAssignment
             CommandLine.Text = "";
         }
 
+        /// <summary>
+        /// Runs the multi line script
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void runScript_Click(object sender, EventArgs e)
         {
             foreach(string line  in scriptCommands.Lines)
@@ -112,11 +137,21 @@ namespace ProgrammingLanguageAssignment
             }
         }
 
+        /// <summary>
+        /// Saves file to the name provided
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveFile_Click(object sender, EventArgs e)
         {
             File.WriteAllLines(fileName.Text, scriptCommands.Lines);
         }
 
+        /// <summary>
+        /// Opens a file and loads it into the multi line
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void openScript_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -140,6 +175,11 @@ namespace ProgrammingLanguageAssignment
                     MessageBox.Show("Something went wrong please try again");
                 }
             }
+        }
+
+        private void ProgammingLanguageForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -7,6 +7,9 @@ using System.Drawing;
 
 namespace ProgrammingLanguageAssignment
 {
+    /// <summary>
+    /// Not finishe, to be introduced in Component 2
+    /// </summary>
     public abstract class ConditionalCommand
     {
 

@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace ProgrammingLanguageAssignment
 {
+    /// <summary>
+    /// Class responsible for parsing a string into a command
+    /// </summary>
     public class CommandParser
     {
         public String command;
         public String[] args;
 
+        /// <summary>
+        /// Parses a string into an argument and its parameters
+        /// </summary>
+        /// <param name="CommandText"></param>
         public CommandParser(String CommandText)
         {
             String[] commandParts = CommandText.Split(' ');

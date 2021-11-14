@@ -7,13 +7,26 @@ using System.Drawing;
 
 namespace ProgrammingLanguageAssignment
 {
-
-    class PenColour : DrawCommand
+    /// <summary>
+    /// Class resposible for managing the "pen -colour" command
+    /// </summary>
+    public class PenColour : DrawCommand
     {
+        /// <summary>
+        /// The colour will be set to the value set here
+        /// </summary>
         public string canvasColour;
 
+        /// <summary>
+        /// Allowed Colour list as these will be translated to Color models
+        /// </summary>
         List<string> allowedColours = new List<string> { "red", "blue", "green", "black" };
 
+        /// <summary>
+        /// Updates the colour set on the provided canvas instance
+        /// </summary>
+        /// <param name="canvas"></param>
+        /// <returns></returns>
         public override bool Execute(Canvas canvas)
         {
             switch(this.canvasColour)
@@ -39,6 +52,10 @@ namespace ProgrammingLanguageAssignment
             return true;
         }
 
+        /// <summary>
+        /// Parse the data provided to ensure no invalid colours are passed
+        /// </summary>
+        /// <param name="args"></param>
         public override void ParseArguments(string[] args)
         {
             String chosenColour = args[0];
@@ -58,6 +75,11 @@ namespace ProgrammingLanguageAssignment
             }
         }
 
+        /// <summary>
+        /// Validate the arguments provided to ensure the colours given are a valid option
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public override string validateArguments(string[] args)
         {
             try

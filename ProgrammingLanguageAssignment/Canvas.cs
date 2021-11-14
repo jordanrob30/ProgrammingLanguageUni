@@ -9,22 +9,35 @@ namespace ProgrammingLanguageAssignment
 {
     public class Canvas
     {
-        //Graphics Instance used to draw to the screen
+        /// <summary>
+        /// Graphics Instance used to draw to the screen
+        /// </summary>
         Graphics g;
 
-        //Pen instance used for outputted data
+        /// <summary>
+        /// Pen instance used for outputted data
+        /// </summary>
         public Pen Pen;
 
+        /// <summary>
+        /// Brush used for filling Shapes
+        /// </summary>
         public Brush brush;
 
-        /*
-         * X and Y Postions for current instance
-         */
-        public int xPos = 0;
-        public int yPos = 0;
+        /// <summary>
+        /// X and Y Postions for current instance
+        /// </summary>
+        public int xPos, yPos = 0;
 
+        /// <summary>
+        /// Local bool to determine if a shape should be filled
+        /// </summary>
         public bool fill = false;
 
+        /// <summary>
+        /// Constructor responsible for assigning local Graphics object and inital Pen Colour (Black)
+        /// </summary>
+        /// <param name="g"></param>
         public Canvas(Graphics g)
         {
             this.g = g;
@@ -33,12 +46,20 @@ namespace ProgrammingLanguageAssignment
             this.drawPositionIndicator();
         }
 
+        /// <summary>
+        /// TODO: To introduce later
+        /// </summary>
         public void drawPositionIndicator()
         {
             //int indicatorSize = 2;
             //g.DrawEllipse(this.Pen, this.xPos - indicatorSize, this.yPos - indicatorSize, indicatorSize * 2, indicatorSize * 2);
         }
 
+        /// <summary>
+        /// Draws a line to provided X and Y values
+        /// </summary>
+        /// <param name="toX">X Position of where to draw to</param>
+        /// <param name="toY">Y Position of where to draw to</param>
         public void DrawLine(int toX, int toY)
         {
             g.DrawLine(this.Pen, this.xPos, this.yPos, toX, toY);
@@ -48,6 +69,10 @@ namespace ProgrammingLanguageAssignment
             this.yPos = toY;
         }
 
+        /// <summary>
+        /// Draws a square to the provided bit map
+        /// </summary>
+        /// <param name="size">size in pixels of square</param>
         public void DrawSquare(int size)
         {
             g.DrawRectangle(this.Pen, this.xPos, this.yPos, this.xPos + size, this.yPos + size);
@@ -58,6 +83,11 @@ namespace ProgrammingLanguageAssignment
             }
         }
 
+        /// <summary>
+        /// Draws a rectangle at the current x,y position with the provided height and width
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
         public void DrawRectangle(int width, int height)
         {
             g.DrawRectangle(this.Pen, this.xPos, this.yPos, this.xPos + width, this.yPos + height);
@@ -69,6 +99,10 @@ namespace ProgrammingLanguageAssignment
         }
 
 
+        /// <summary>
+        /// Draws a circle to the screen with the provided radius
+        /// </summary>
+        /// <param name="radius"></param>
         public void DrawCircle(int radius)
         {
             g.DrawEllipse(this.Pen, this.xPos - radius, this.yPos - radius, radius * 2, radius * 2);
@@ -79,9 +113,11 @@ namespace ProgrammingLanguageAssignment
             }
         }
 
-        /**
-         * https://stackoverflow.com/questions/54974422/fill-a-drawn-triangle-using-lines
-         * */
+        /// <summary>
+        /// Draws an Equilateral triangle to the screen with the provided width and height
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
         public void DrawTriangle(int width, int height)
         {
             int originalX = this.xPos;
@@ -114,6 +150,9 @@ namespace ProgrammingLanguageAssignment
             }
         }
 
+        /// <summary>
+        /// Clears the bitmap to the original colour
+        /// </summary>
         public void Clear()
         {
             this.g.Clear(Color.Gray);

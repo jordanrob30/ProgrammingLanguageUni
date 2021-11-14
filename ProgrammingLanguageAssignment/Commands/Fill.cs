@@ -6,10 +6,21 @@ using System.Threading.Tasks;
 
 namespace ProgrammingLanguageAssignment
 {
+    /// <summary>
+    /// Enables or disables the fill boolean on a provided canvas and validates the provided arguments
+    /// </summary>
     class Fill : DrawCommand
     {
+        /// <summary>
+        /// Whether or not fill is enabled
+        /// </summary>
         public bool fill;
 
+        /// <summary>
+        /// Enables or disables the fill boolean on a provided canvas
+        /// </summary>
+        /// <param name="canvas"></param>
+        /// <returns></returns>
         public override bool Execute(Canvas canvas)
         {
             canvas.fill = this.fill;
@@ -17,6 +28,10 @@ namespace ProgrammingLanguageAssignment
             return true;
         }
 
+        /// <summary>
+        /// Sets the local scope fill value depending on passed arguments
+        /// </summary>
+        /// <param name="args"></param>
         public override void ParseArguments(string[] args)
         {
             if(args[0] == "on")
@@ -28,6 +43,11 @@ namespace ProgrammingLanguageAssignment
             }
         }
 
+        /// <summary>
+        /// Ensures user has provided on/off as a parameter otherwise error is returned
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public override string validateArguments(string[] args)
         {
             try

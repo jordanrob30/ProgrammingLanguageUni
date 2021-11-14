@@ -6,9 +6,21 @@ using System.Threading.Tasks;
 
 namespace ProgrammingLanguageAssignment
 {
-    class Rectangle : DrawCommand
+    /// <summary>
+    /// Class responsible for the rectangle -w -h command
+    /// </summary>
+    public class Rectangle : DrawCommand
     {
+        /// <summary>
+        /// Stored width and height values of the rectangle
+        /// </summary>
         public int width, height = 0;
+
+        /// <summary>
+        /// Draws the rectangle on a provided canvas
+        /// </summary>
+        /// <param name="canvas"></param>
+        /// <returns></returns>
         public override bool Execute(Canvas canvas)
         {
             canvas.DrawRectangle(this.width, this.height);
@@ -16,12 +28,21 @@ namespace ProgrammingLanguageAssignment
             return true;
         }
 
+        /// <summary>
+        /// Parses provided arguments into int values and assigns to local width and height values
+        /// </summary>
+        /// <param name="args"></param>
         public override void ParseArguments(string[] args)
         {
             this.width = Int32.Parse(args[0]);
             this.height = Int32.Parse(args[1]);
         }
 
+        /// <summary>
+        /// Ensures provided arguments are valid and returns an error message if not.
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public override string validateArguments(string[] args)
         {
             try
