@@ -67,6 +67,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\Rectangle.cs" />
+    <Compile Include="Variable.cs" />
     <EmbeddedResource Include="ProgrammingLanguageForm.resx">
       <DependentUpon>ProgrammingLanguageForm.cs</DependentUpon>
     </EmbeddedResource>

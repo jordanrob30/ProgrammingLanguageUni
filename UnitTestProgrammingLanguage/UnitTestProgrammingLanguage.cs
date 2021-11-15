@@ -206,5 +206,15 @@ namespace UnitTestProgrammingLanguage
 
             Assert.AreEqual(canvas.Pen.Color, Color.Red);
         }
+
+        [TestMethod]
+        public void TestVariableSetMethod()
+        {
+            Variable var = new Variable();
+
+            var.Set("10");
+
+            Assert.AreEqual(var.Get(), "10");
+        }
     }
 }
