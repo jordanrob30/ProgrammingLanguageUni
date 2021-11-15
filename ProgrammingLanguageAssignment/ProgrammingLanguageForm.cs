@@ -65,6 +65,9 @@ namespace ProgrammingLanguageAssignment
                 case "moveTo":
                     command = new MoveTo();
                     break;
+                case "drawTo":
+                    command = new DrawTo();
+                    break;
                 case "circle":
                     command = new Circle();
                     break;
