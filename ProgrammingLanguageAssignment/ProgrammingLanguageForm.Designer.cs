@@ -59,6 +59,7 @@ namespace ProgrammingLanguageAssignment
             this.scriptCommands.Size = new System.Drawing.Size(621, 392);
             this.scriptCommands.TabIndex = 1;
             this.scriptCommands.Text = "";
+            this.scriptCommands.TextChanged += new System.EventHandler(this.scriptCommands_TextChanged);
             // 
             // CommandLine
             // 

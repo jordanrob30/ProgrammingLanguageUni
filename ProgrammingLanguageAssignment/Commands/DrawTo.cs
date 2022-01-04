@@ -29,7 +29,7 @@ namespace ProgrammingLanguageAssignment
         /// Parses the provided data to ensure X and Y are int values
         /// </summary>
         /// <param name="args"></param>
-        public override void ParseArguments(String[] args)
+        public override void ParseArguments(String[] args, IDictionary<string, string> varDict)
         {
             this.x = Int32.Parse(args[0]);
             this.y = Int32.Parse(args[1]);
@@ -40,7 +40,7 @@ namespace ProgrammingLanguageAssignment
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public override string validateArguments(string[] args)
+        public override string validateArguments(string[] args, IDictionary<string, string> varDict)
         {
             try
             {

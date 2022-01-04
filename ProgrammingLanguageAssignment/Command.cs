@@ -22,13 +22,13 @@ namespace ProgrammingLanguageAssignment
         /// Arguments are passed to this after validateArguments, this can be used to provided the string of arguments to the required data types
         /// </summary>
         /// <param name="args"></param>
-        void ParseArguments(String[] args);
+        void ParseArguments(String[] args, IDictionary<string, string> varDict);
 
         /// <summary>
         /// validate the data provided to ensure it can later be parsed otherwise return a string with an error
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        string validateArguments(String[] args);
+        string validateArguments(String[] args, IDictionary<string, string> varDict);
     }
 }

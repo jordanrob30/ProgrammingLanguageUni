@@ -2,16 +2,37 @@
 
 namespace ProgrammingLanguageAssignment
 {
-    public class Variable
+    public class Variable : Command
     {
-        public void Set(string v)
+        public string Name;
+
+        /// <summary>
+        /// Method can just return true, this class is here for validation in future and may not be required
+        /// </summary>
+        /// <param name="canvas"></param>
+        /// <returns></returns>
+        public bool Execute(Canvas canvas)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
-        public string Get()
+        /// <summary>
+        /// No parsing currently required as all variables are seen as strings
+        /// </summary>
+        /// <param name="args"></param>
+        public void ParseArguments(string[] args, System.Collections.Generic.IDictionary<string, string> varDict)
         {
-            throw new NotImplementedException();
+            
+        }
+
+        /// <summary>
+        /// No validation at the moment as all variables are seen as strings
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        public string validateArguments(string[] args, System.Collections.Generic.IDictionary<string, string> varDict)
+        {
+            return "";
         }
     }
 }

@@ -32,7 +32,7 @@ namespace ProgrammingLanguageAssignment
         /// Sets the local scope fill value depending on passed arguments
         /// </summary>
         /// <param name="args"></param>
-        public override void ParseArguments(string[] args)
+        public override void ParseArguments(string[] args, IDictionary<string, string> varDict)
         {
             if(args[0] == "on")
             {
@@ -48,7 +48,7 @@ namespace ProgrammingLanguageAssignment
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public override string validateArguments(string[] args)
+        public override string validateArguments(string[] args, IDictionary<string, string> varDict)
         {
             try
             {

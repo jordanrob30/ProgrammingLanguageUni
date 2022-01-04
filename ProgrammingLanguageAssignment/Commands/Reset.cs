@@ -28,7 +28,7 @@ namespace ProgrammingLanguageAssignment
         /// Blank method as no arguments provided
         /// </summary>
         /// <param name="args"></param>
-        public override void ParseArguments(string[] args)
+        public override void ParseArguments(string[] args, IDictionary<string, string> varDict)
         {
             
         }
@@ -37,7 +37,7 @@ namespace ProgrammingLanguageAssignment
         /// Blank method as no arguments provided
         /// </summary>
         /// <param name="args"></param>
-        public override string validateArguments(string[] args)
+        public override string validateArguments(string[] args, IDictionary<string, string> varDict)
         {
             return "";
         }

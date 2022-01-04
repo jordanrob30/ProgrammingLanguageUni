@@ -28,7 +28,7 @@ namespace ProgrammingLanguageAssignment
         /// Parses the provided arguments into int values
         /// </summary>
         /// <param name="args"></param>
-        public override void ParseArguments(string[] args)
+        public override void ParseArguments(string[] args, IDictionary<string, string> varDict)
         {
             this.width = Int32.Parse(args[0]);
             this.height = Int32.Parse(args[1]);
@@ -39,7 +39,7 @@ namespace ProgrammingLanguageAssignment
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public override string validateArguments(string[] args)
+        public override string validateArguments(string[] args, IDictionary<string, string> varDict)
         {
             try
             {

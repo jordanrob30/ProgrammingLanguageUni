@@ -32,9 +32,15 @@ namespace ProgrammingLanguageAssignment
         /// Parses the provided arguments
         /// </summary>
         /// <param name="args"></param>
-        public override void ParseArguments(string[] args)
+        public override void ParseArguments(string[] args, IDictionary<string, string> varDict)
         {
-            this.radius = Int32.Parse(args[0]);
+            try
+            {
+                this.radius = Int32.Parse(args[0]);
+            } catch(Exception ex)
+            {
+                this.radius = Int32.Parse(varDict[args[0]]);
+            }
         }
         
         /// <summary>
@@ -42,18 +48,28 @@ namespace ProgrammingLanguageAssignment
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public override string validateArguments(string[] args)
+        public override string validateArguments(string[] args, IDictionary<string, string> varDict)
         {
             try
             {
                 Int32.Parse(args[0]);
-
-                return "";
             }
             catch (Exception e)
             {
+                try
+                {
+                    this.radius = Int32.Parse(varDict[args[0]]);
+                    return "";
+                }
+                catch (Exception ex)
+                {
+                    return "Invalid arguments, expecting circle <radius>";
+                }              
+                
                 return "Invalid arguments, expecting circle <radius>";
             }
+
+            return "";
         }
     }
 }

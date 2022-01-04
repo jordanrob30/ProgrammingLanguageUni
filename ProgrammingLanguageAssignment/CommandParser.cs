@@ -32,6 +32,35 @@ namespace ProgrammingLanguageAssignment
                 {
                     arguments.Add(argumentsSplit[i]);
                 }
+            }
+
+            this.args = arguments.ToArray();
+
+            //updating the outputted parameters when a variable is being set
+            if(this.args.Length > 0)
+            {
+                if (this.args[0] == "=")
+                {
+                    this.command = "setVar";
+                    arguments.Clear();
+                    arguments.Add(commandParts[0]);
+
+                    if(commandParts.Length > 3)
+                    {
+                        arguments.Add(commandParts[2] + " " + commandParts[3] + " " + commandParts[4]);
+                    } else
+                    {
+                        arguments.Add(commandParts[2]);
+                    }
+                    
+                }
+                else if (this.command == "while")
+                {
+                    arguments.Clear();
+                    arguments.Add(commandParts[1]); //variable
+                    arguments.Add(commandParts[2]); //operand
+                    arguments.Add(commandParts[3]); //value
+                }
 
                 this.args = arguments.ToArray();
             }

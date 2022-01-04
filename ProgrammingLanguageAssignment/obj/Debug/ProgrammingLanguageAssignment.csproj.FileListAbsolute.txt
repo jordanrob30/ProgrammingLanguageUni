@@ -8,3 +8,14 @@ D:\vsrepos\ProgrammingLanguageAssignment\ProgrammingLanguageAssignment\obj\Debug
 D:\vsrepos\ProgrammingLanguageAssignment\ProgrammingLanguageAssignment\obj\Debug\ProgrammingLanguageAssignment.exe
 D:\vsrepos\ProgrammingLanguageAssignment\ProgrammingLanguageAssignment\obj\Debug\ProgrammingLanguageAssignment.pdb
 D:\vsrepos\ProgrammingLanguageAssignment\ProgrammingLanguageAssignment\obj\Debug\ProgrammingLanguageAssignment.ProgammingLanguageForm.resources
+C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment\bin\Debug\ProgrammingLanguageAssignment.exe.config
+C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment\bin\Debug\ProgrammingLanguageAssignment.exe
+C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment\bin\Debug\ProgrammingLanguageAssignment.pdb
+C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment\obj\Debug\ProgrammingLanguageAssignment.csproj.AssemblyReference.cache
+C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment\obj\Debug\ProgrammingLanguageAssignment.csproj.SuggestedBindingRedirects.cache
+C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment\obj\Debug\ProgrammingLanguageAssignment.ProgammingLanguageForm.resources
+C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment\obj\Debug\ProgrammingLanguageAssignment.Properties.Resources.resources
+C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment\obj\Debug\ProgrammingLanguageAssignment.csproj.GenerateResource.cache
+C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment\obj\Debug\ProgrammingLanguageAssignment.csproj.CoreCompileInputs.cache
+C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment\obj\Debug\ProgrammingLanguageAssignment.exe
+C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment\obj\Debug\ProgrammingLanguageAssignment.pdb

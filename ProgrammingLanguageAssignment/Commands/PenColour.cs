@@ -56,7 +56,7 @@ namespace ProgrammingLanguageAssignment
         /// Parse the data provided to ensure no invalid colours are passed
         /// </summary>
         /// <param name="args"></param>
-        public override void ParseArguments(string[] args)
+        public override void ParseArguments(string[] args, IDictionary<string, string> varDict)
         {
             String chosenColour = args[0];
 
@@ -80,7 +80,7 @@ namespace ProgrammingLanguageAssignment
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public override string validateArguments(string[] args)
+        public override string validateArguments(string[] args, IDictionary<string, string> varDict)
         {
             try
             {

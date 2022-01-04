@@ -16,6 +16,8 @@ namespace ProgrammingLanguageAssignment
         Bitmap OutputBm = new Bitmap(640, 480);
         Canvas FormCanvas;
 
+        public IDictionary<string, string> VarDict = new Dictionary<string, string>();
+
         public ProgammingLanguageForm()
         {
             InitializeComponent();
@@ -56,7 +58,7 @@ namespace ProgrammingLanguageAssignment
         /// </summary>
         /// <param name="commandParser"></param>
         /// <returns></returns>
-        public bool RunCommand(CommandParser commandParser)
+        public bool RunCommand(CommandParser commandParser, int iteration = 0)
         {
             Command command;
 
@@ -89,13 +91,107 @@ namespace ProgrammingLanguageAssignment
                 case "pen":
                     command = new PenColour();
                     break;
+                case "setVar":
+                    command = new Variable();
+
+                    if(commandParser.args[1].Contains("-") || commandParser.args[1].Contains("+"))
+                    {
+                        //split by space to get the expression
+                        String[] splitExpr = commandParser.args[1].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                        int index = 0;
+                        foreach(String s in splitExpr)
+                        {
+                            //assuming only integers
+                            if(s.Contains("-"))
+                            {
+                                this.VarDict[commandParser.args[0]] = (Int32.Parse(this.VarDict[splitExpr[index - 1]]) - Int32.Parse(splitExpr[index + 1])).ToString();
+                            } else if (s.Contains("+"))
+                            {
+                                this.VarDict[commandParser.args[0]] = (Int32.Parse(this.VarDict[splitExpr[index - 1]]) + Int32.Parse(splitExpr[index + 1])).ToString();
+                            }
+
+                            index++;
+                        }
+                    } else
+                    {
+                        this.VarDict[commandParser.args[0]] = commandParser.args[1];
+                    }
+
+                    break;
+                case "while":
+
+                    //used as this implements what is required for now
+                    command = new Variable();
+
+                    //find the endloop keyword and identify the lines
+                    int originalCounter = iteration;
+                    int counter = 0;
+                    List<string> loopCommands = new List<string>();                   
+                    foreach (string line in scriptCommands.Lines)
+                    {
+                        if (counter <= originalCounter)
+                        {
+                            counter++;
+                            continue;
+                        }
+
+                        if (line == "Endloop") break;
+
+                        //add commands to an array
+                        loopCommands.Add(line);
+                        counter++;
+                    }
+
+                    //evaluate loop condition
+                    String varName = commandParser.args[0];
+                    String op = commandParser.args[1];
+                    String value = commandParser.args[2];
+
+                    try
+                    {
+                        while (true)
+                        {
+                            bool run = false;
+                            if (op == "<")
+                            {
+                                if (Int32.Parse(this.VarDict[varName]) < Int32.Parse(value))
+                                {
+                                    run = true;
+                                }
+                            }
+
+                            if(run)
+                            {
+                                foreach(String loopCommand in loopCommands)
+                                {
+                                    CommandParser commandParserLoop = new CommandParser(loopCommand);
+                                    this.RunCommand(commandParserLoop);
+                                }
+                            } 
+                            else
+                            {
+                                //exit if run no longer is set to true (conditon no longer met)
+                                break;
+                            }
+                        }
+                    } catch(Exception e)
+                    {
+                        errorField.Text = commandParser.command + " " + e.ToString();
+                        return false;
+                    }
+
+                    break;
+                case "Endloop":
+                    return true;
                 default:
                     errorField.Text = commandParser.command + " is not a valid command";
                     return false;
             }
 
+         
             //Validate the arguments passed
-            String validationMessage = command.validateArguments(commandParser.args);
+            String validationMessage = command.validateArguments(commandParser.args, VarDict);
             if (validationMessage != "")
             {
                 errorField.Text = validationMessage;
@@ -105,7 +201,7 @@ namespace ProgrammingLanguageAssignment
                 errorField.Text = "";
             }
 
-            command.ParseArguments(commandParser.args);
+            command.ParseArguments(commandParser.args, VarDict);
             command.Execute(this.FormCanvas);
             Refresh();
 
@@ -132,11 +228,13 @@ namespace ProgrammingLanguageAssignment
         /// <param name="e"></param>
         private void runScript_Click(object sender, EventArgs e)
         {
-            foreach(string line  in scriptCommands.Lines)
+            int counter = 0;
+            foreach(string line in scriptCommands.Lines)
             {
                 CommandParser commandParser = new CommandParser(line);
-                bool result = this.RunCommand(commandParser);
+                bool result = this.RunCommand(commandParser, counter);
                 if (!result) break;
+                counter++;
             }
         }
 
@@ -181,6 +279,11 @@ namespace ProgrammingLanguageAssignment
         }
 
         private void ProgammingLanguageForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void scriptCommands_TextChanged(object sender, EventArgs e)
         {
 
         }
