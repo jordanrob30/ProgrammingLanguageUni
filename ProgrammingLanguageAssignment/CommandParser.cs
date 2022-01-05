@@ -54,7 +54,7 @@ namespace ProgrammingLanguageAssignment
                     }
                     
                 }
-                else if (this.command == "while")
+                else if (this.command == "while" || this.command == "if")
                 {
                     arguments.Clear();
                     arguments.Add(commandParts[1]); //variable

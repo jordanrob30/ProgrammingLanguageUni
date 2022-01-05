@@ -18,6 +18,8 @@ namespace ProgrammingLanguageAssignment
 
         public IDictionary<string, string> VarDict = new Dictionary<string, string>();
 
+        public int linesToSkip = 0;
+
         public ProgammingLanguageForm()
         {
             InitializeComponent();
@@ -62,12 +64,12 @@ namespace ProgrammingLanguageAssignment
         {
             Command command;
 
-            switch (commandParser.command)
+            switch (commandParser.command.ToLower())
             {
-                case "moveTo":
+                case "moveto":
                     command = new MoveTo();
                     break;
-                case "drawTo":
+                case "drawto":
                     command = new DrawTo();
                     break;
                 case "circle":
@@ -91,7 +93,7 @@ namespace ProgrammingLanguageAssignment
                 case "pen":
                     command = new PenColour();
                     break;
-                case "setVar":
+                case "setvar":
                     command = new Variable();
 
                     if(commandParser.args[1].Contains("-") || commandParser.args[1].Contains("+"))
@@ -182,8 +184,84 @@ namespace ProgrammingLanguageAssignment
                     }
 
                     break;
-                case "Endloop":
+                case "endloop":
+                case "endif":
                     return true;
+                case "if":
+
+                    //used as this implements what is required for now
+                    command = new Variable();
+
+                    //find the endif keyword and identify the lines
+                    int orgCounter = iteration;
+                    int localCounter = 0;
+                    List<string> ifCommands = new List<string>();                   
+                    foreach (string line in scriptCommands.Lines)
+                    {
+                        if (localCounter <= orgCounter)
+                        {
+                            localCounter++;
+                            continue;
+                        }
+
+                        if (line == "Endif") break;
+
+                        //add commands to an array
+                        ifCommands.Add(line);
+                        localCounter++;
+                    }
+
+                    //evaluate if condition
+                    String variableName = commandParser.args[0];
+                    String operand = commandParser.args[1];
+                    String compValue = commandParser.args[2];
+
+                    this.linesToSkip = ifCommands.Count;
+
+                    try
+                    {
+                        bool run = false;
+                        if (operand == "<")
+                        {
+                            if (Int32.Parse(this.VarDict[variableName]) < Int32.Parse(compValue))
+                            {
+                                run = true;
+                            }
+                        } else if (operand == ">")
+                        {
+                            if (Int32.Parse(this.VarDict[variableName]) > Int32.Parse(compValue))
+                            {
+                                run = true;
+                            }
+                        }
+                        else if (operand == "==")
+                        {
+                            if (Int32.Parse(this.VarDict[variableName]) == Int32.Parse(compValue))
+                            {
+                                run = true;
+                            }
+                        }
+
+                        if (run)
+                        {
+                            foreach(String ifCommand in ifCommands)
+                            {
+                                CommandParser commandParserIf = new CommandParser(ifCommand);
+                                this.RunCommand(commandParserIf);
+                            }
+                        } 
+                        else
+                        {
+                            //exit if run no longer is set to true (conditon no longer met)
+                            break;
+                        }
+                       
+                    } catch(Exception e)
+                    {
+                        errorField.Text = commandParser.command + " " + e.ToString();
+                        return false;
+                    }
+                    break;
                 default:
                     errorField.Text = commandParser.command + " is not a valid command";
                     return false;
@@ -231,8 +309,15 @@ namespace ProgrammingLanguageAssignment
             int counter = 0;
             foreach(string line in scriptCommands.Lines)
             {
+                if (this.linesToSkip > 0)
+                {
+                    this.linesToSkip--;
+                    continue;
+                }
+
                 CommandParser commandParser = new CommandParser(line);
                 bool result = this.RunCommand(commandParser, counter);
+
                 if (!result) break;
                 counter++;
             }
