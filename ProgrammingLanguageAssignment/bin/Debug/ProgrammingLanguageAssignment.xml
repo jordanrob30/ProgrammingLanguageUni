@@ -1,0 +1,524 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProgrammingLanguageAssignment</name>
+    </assembly>
+    <members>
+        <member name="F:ProgrammingLanguageAssignment.Canvas.g">
+            <summary>
+            Graphics Instance used to draw to the screen
+            </summary>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.Canvas.Pen">
+            <summary>
+            Pen instance used for outputted data
+            </summary>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.Canvas.brush">
+            <summary>
+            Brush used for filling Shapes
+            </summary>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.Canvas.xPos">
+            <summary>
+            X and Y Postions for current instance
+            </summary>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.Canvas.yPos">
+            <summary>
+            X and Y Postions for current instance
+            </summary>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.Canvas.fill">
+            <summary>
+            Local bool to determine if a shape should be filled
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Canvas.#ctor(System.Drawing.Graphics)">
+            <summary>
+            Constructor responsible for assigning local Graphics object and inital Pen Colour (Black)
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Canvas.drawPositionIndicator">
+            <summary>
+            TODO: To introduce later
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Canvas.DrawLine(System.Int32,System.Int32)">
+            <summary>
+            Draws a line to provided X and Y values
+            </summary>
+            <param name="toX">X Position of where to draw to</param>
+            <param name="toY">Y Position of where to draw to</param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Canvas.DrawSquare(System.Int32)">
+            <summary>
+            Draws a square to the provided bit map
+            </summary>
+            <param name="size">size in pixels of square</param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Canvas.DrawRectangle(System.Int32,System.Int32)">
+            <summary>
+            Draws a rectangle at the current x,y position with the provided height and width
+            </summary>
+            <param name="width"></param>
+            <param name="height"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Canvas.DrawCircle(System.Int32)">
+            <summary>
+            Draws a circle to the screen with the provided radius
+            </summary>
+            <param name="radius"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Canvas.DrawTriangle(System.Int32,System.Int32)">
+            <summary>
+            Draws an Equilateral triangle to the screen with the provided width and height
+            </summary>
+            <param name="width"></param>
+            <param name="height"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Canvas.Clear">
+            <summary>
+            Clears the bitmap to the original colour
+            </summary>
+        </member>
+        <member name="T:ProgrammingLanguageAssignment.Circle">
+            <summary>
+            Circle Class responsible for validating arguments and triggering DrawCircle method
+            </summary>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.Circle.radius">
+            <summary>
+            Radius of the created circle
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Circle.Execute(ProgrammingLanguageAssignment.Canvas)">
+            <summary>
+            Triggers DrawCircle command on a provided canvas
+            </summary>
+            <param name="canvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Circle.ParseArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Parses the provided arguments
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Circle.validateArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Validates the provided arguments to ensure they are Int32 parsable
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ProgrammingLanguageAssignment.Clear">
+            <summary>
+            Clears a provided canvas when executed
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Clear.Execute(ProgrammingLanguageAssignment.Canvas)">
+            <summary>
+            Clears the provided canvas
+            </summary>
+            <param name="canvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Clear.ParseArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Blank method as no arguments provided
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Clear.validateArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Blank method as no arguments provided
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.DrawTo.x">
+            <summary>
+            X Y values to move to
+            </summary>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.DrawTo.y">
+            <summary>
+            X Y values to move to
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.DrawTo.Execute(ProgrammingLanguageAssignment.Canvas)">
+            <summary>
+            Moves the X and Y positions of a provided Cavas instance
+            </summary>
+            <param name="canvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.DrawTo.ParseArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Parses the provided data to ensure X and Y are int values
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.DrawTo.validateArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Validates the provided data and returns an error message if provided arguments are invalid
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ProgrammingLanguageAssignment.Fill">
+            <summary>
+            Enables or disables the fill boolean on a provided canvas and validates the provided arguments
+            </summary>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.Fill.fill">
+            <summary>
+            Whether or not fill is enabled
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Fill.Execute(ProgrammingLanguageAssignment.Canvas)">
+            <summary>
+            Enables or disables the fill boolean on a provided canvas
+            </summary>
+            <param name="canvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Fill.ParseArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Sets the local scope fill value depending on passed arguments
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Fill.validateArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Ensures user has provided on/off as a parameter otherwise error is returned
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ProgrammingLanguageAssignment.PenColour">
+            <summary>
+            Class resposible for managing the "pen -colour" command
+            </summary>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.PenColour.canvasColour">
+            <summary>
+            The colour will be set to the value set here
+            </summary>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.PenColour.allowedColours">
+            <summary>
+            Allowed Colour list as these will be translated to Color models
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.PenColour.Execute(ProgrammingLanguageAssignment.Canvas)">
+            <summary>
+            Updates the colour set on the provided canvas instance
+            </summary>
+            <param name="canvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.PenColour.ParseArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Parse the data provided to ensure no invalid colours are passed
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.PenColour.validateArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Validate the arguments provided to ensure the colours given are a valid option
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ProgrammingLanguageAssignment.Reset">
+            <summary>
+            Class resonsible for reseting the X and Y values
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Reset.Execute(ProgrammingLanguageAssignment.Canvas)">
+            <summary>
+            When ran updates the X and Y values to 0,0 on a provided canvas
+            </summary>
+            <param name="canvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Reset.ParseArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Blank method as no arguments provided
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Reset.validateArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Blank method as no arguments provided
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:ProgrammingLanguageAssignment.Triangle">
+            <summary>
+            Class responsible for drawing a triangle to the screen
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Triangle.Execute(ProgrammingLanguageAssignment.Canvas)">
+            <summary>
+            Triggers the DrawTriangle method on a provided canvas instance
+            </summary>
+            <param name="canvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Triangle.ParseArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Parses the provided arguments into int values
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Triangle.validateArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Validates the parameters to ensure they can be parsed to ints
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ProgrammingLanguageAssignment.ConditionalCommand">
+            <summary>
+            Not finishe, to be introduced in Component 2
+            </summary>
+        </member>
+        <member name="T:ProgrammingLanguageAssignment.CommandParser">
+            <summary>
+            Class responsible for parsing a string into a command
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.CommandParser.#ctor(System.String)">
+            <summary>
+            Parses a string into an argument and its parameters
+            </summary>
+            <param name="CommandText"></param>
+        </member>
+        <member name="T:ProgrammingLanguageAssignment.DrawCommand">
+            <summary>
+            Abstract class responsible for defining the outline of a command that requires the canvas
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.DrawCommand.Execute(ProgrammingLanguageAssignment.Canvas)">
+            <summary>
+            Execute is called on the provided canvas
+            </summary>
+            <param name="canvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.DrawCommand.ParseArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+             Arguments are passed to this after validateArguments, this can be used to provided the string of arguments to the required data types
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.DrawCommand.validateArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            validate the data provided to ensure it can later be parsed otherwise return a string with an error
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ProgrammingLanguageAssignment.Command">
+            <summary>
+            Interface the defines the outline of a "Command"
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Command.Execute(ProgrammingLanguageAssignment.Canvas)">
+            <summary>
+            Execute is called on the provided canvas
+            </summary>
+            <param name="canvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Command.ParseArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Arguments are passed to this after validateArguments, this can be used to provided the string of arguments to the required data types
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Command.validateArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            validate the data provided to ensure it can later be parsed otherwise return a string with an error
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.MoveTo.x">
+            <summary>
+            X Y values to move to
+            </summary>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.MoveTo.y">
+            <summary>
+            X Y values to move to
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.MoveTo.Execute(ProgrammingLanguageAssignment.Canvas)">
+            <summary>
+            Moves the X and Y positions of a provided Cavas instance
+            </summary>
+            <param name="canvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.MoveTo.ParseArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Parses the provided data to ensure X and Y are int values
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.MoveTo.validateArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Validates the provided data and returns an error message if provided arguments are invalid
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.ProgammingLanguageForm.canvas_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Ensure objects are actually drawn
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.ProgammingLanguageForm.CommandLine_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Allows commands to be ran on enter for single line
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.ProgammingLanguageForm.RunCommand(ProgrammingLanguageAssignment.CommandParser,System.Int32)">
+            <summary>
+            Runs the command determined by the commandParser
+            </summary>
+            <param name="commandParser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.ProgammingLanguageForm.runSingle_Click(System.Object,System.EventArgs)">
+            <summary>
+            Runs the single line command but from the button "Run"
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.ProgammingLanguageForm.runScript_Click(System.Object,System.EventArgs)">
+            <summary>
+            Runs the multi line script
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.ProgammingLanguageForm.saveFile_Click(System.Object,System.EventArgs)">
+            <summary>
+            Saves file to the name provided
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.ProgammingLanguageForm.openScript_Click(System.Object,System.EventArgs)">
+            <summary>
+            Opens a file and loads it into the multi line
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.ProgammingLanguageForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.ProgammingLanguageForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.ProgammingLanguageForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:ProgrammingLanguageAssignment.Rectangle">
+            <summary>
+            Class responsible for the rectangle -w -h command
+            </summary>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.Rectangle.width">
+            <summary>
+            Stored width and height values of the rectangle
+            </summary>
+        </member>
+        <member name="F:ProgrammingLanguageAssignment.Rectangle.height">
+            <summary>
+            Stored width and height values of the rectangle
+            </summary>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Rectangle.Execute(ProgrammingLanguageAssignment.Canvas)">
+            <summary>
+            Draws the rectangle on a provided canvas
+            </summary>
+            <param name="canvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Rectangle.ParseArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Parses provided arguments into int values and assigns to local width and height values
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Rectangle.validateArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Ensures provided arguments are valid and returns an error message if not.
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Variable.Execute(ProgrammingLanguageAssignment.Canvas)">
+            <summary>
+            Method can just return true, this class is here for validation in future and may not be required
+            </summary>
+            <param name="canvas"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Variable.ParseArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            No parsing currently required as all variables are seen as strings
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ProgrammingLanguageAssignment.Variable.validateArguments(System.String[],System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            No validation at the moment as all variables are seen as strings
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ProgrammingLanguageAssignment.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ProgrammingLanguageAssignment.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ProgrammingLanguageAssignment.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

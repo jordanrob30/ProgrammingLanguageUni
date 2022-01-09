@@ -19,3 +19,4 @@ C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment
 C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment\obj\Debug\ProgrammingLanguageAssignment.csproj.CoreCompileInputs.cache
 C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment\obj\Debug\ProgrammingLanguageAssignment.exe
 C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment\obj\Debug\ProgrammingLanguageAssignment.pdb
+C:\Users\Jorda\Source\Repos\ProgrammingLanguageUni\ProgrammingLanguageAssignment\bin\Debug\ProgrammingLanguageAssignment.xml

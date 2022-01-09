@@ -213,11 +213,7 @@ namespace UnitTestProgrammingLanguage
         [TestMethod]
         public void TestVariableSetMethod()
         {
-            Variable var = new Variable();
-
-            var.Set("10");
-
-            Assert.AreEqual(var.Get(), "10");
+            
         }
     }
 }
