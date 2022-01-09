@@ -17,6 +17,7 @@ namespace ProgrammingLanguageAssignment
         Canvas FormCanvas;
 
         public IDictionary<string, string> VarDict = new Dictionary<string, string>();
+        public IDictionary<string, string> MethodDict = new Dictionary<string, string>();
 
         public int linesToSkip = 0;
 
@@ -145,6 +146,8 @@ namespace ProgrammingLanguageAssignment
                         counter++;
                     }
 
+                    this.linesToSkip = loopCommands.Count;
+
                     //evaluate loop condition
                     String varName = commandParser.args[0];
                     String op = commandParser.args[1];
@@ -186,6 +189,7 @@ namespace ProgrammingLanguageAssignment
                     break;
                 case "endloop":
                 case "endif":
+                case "endmethod":
                     return true;
                 case "if":
 
@@ -207,7 +211,10 @@ namespace ProgrammingLanguageAssignment
                         if (line == "Endif") break;
 
                         //add commands to an array
-                        ifCommands.Add(line);
+                        if(!line.Contains("if")) {
+                            ifCommands.Add(line);
+                        }
+                        
                         localCounter++;
                     }
 
@@ -262,9 +269,55 @@ namespace ProgrammingLanguageAssignment
                         return false;
                     }
                     break;
+                case "method":
+                    //used as this implements what is required for now
+                    command = new Variable();
+
+                    //find the endmethod keyword and identify the lines
+                    int methodCounter = iteration;
+                    int localMethodCounter = 0;
+                    String commandList = "";                 
+                    foreach (string line in scriptCommands.Lines)
+                    {
+                        if (localMethodCounter <= methodCounter)
+                        {
+                            localMethodCounter++;
+                            continue;
+                        }
+
+                        if (line == "Endmethod") break;
+
+                        //add commands to an array
+                        commandList = commandList + line + ";";
+                        localMethodCounter++;
+                    }
+
+                    this.MethodDict[commandParser.args[0]] = commandList;
+
+                    this.linesToSkip = localMethodCounter;
+                    break;
                 default:
-                    errorField.Text = commandParser.command + " is not a valid command";
-                    return false;
+
+                    //check to see if method exists then run the commands
+                    if(MethodDict.ContainsKey(commandParser.command))
+                    {
+                        String commands = MethodDict[commandParser.command];
+                        String[] commandSplit = commands.Split(';');
+
+                        foreach (String commandStr in commandSplit)
+                        {
+                            CommandParser commandParserMethod = new CommandParser(commandStr);
+                            this.RunCommand(commandParserMethod);
+                        }
+
+                        return true;
+                    } else if(commandParser.command != "")
+                    {
+                        errorField.Text = commandParser.command + " is not a valid command";
+                        return false;
+                    }
+
+                    return true;
             }
 
          

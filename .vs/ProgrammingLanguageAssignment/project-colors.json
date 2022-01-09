@@ -5,7 +5,12 @@
       "ProjectGuid": "b3cfd8b0-6001-4c9a-b478-9c60e1dfd107",
       "DisplayName": "ProgrammingLanguageAssignment",
       "ColorIndex": 0
+    },
+    "9b5b5f3f-ee91-413d-9fa7-13efed9753b5": {
+      "ProjectGuid": "9b5b5f3f-ee91-413d-9fa7-13efed9753b5",
+      "DisplayName": "UnitTestProgrammingLanguage",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }

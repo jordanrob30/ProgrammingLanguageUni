@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProgrammingLanguageAssignment;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace UnitTestProgrammingLanguage
@@ -8,6 +9,8 @@ namespace UnitTestProgrammingLanguage
     [TestClass]
     public class UnitTestProgrammingLanguage
     {
+        public IDictionary<string, string> VarDict = new Dictionary<string, string>();
+
         /// <summary>
         /// Test to ensure Rectangle::validateArguments() throws an error when invalid parameters are passed to it
         /// </summary>
@@ -18,7 +21,7 @@ namespace UnitTestProgrammingLanguage
 
             string[] args = { "badVar", "2" };
 
-            string response = command.validateArguments(args);
+            string response = command.validateArguments(args, this.VarDict);
 
             Assert.AreEqual("Invalid arguments, expecting rectangle <width>,<height>", response);
         }
@@ -33,7 +36,7 @@ namespace UnitTestProgrammingLanguage
 
             string[] args = { "10", "2" };
 
-            string response = command.validateArguments(args);
+            string response = command.validateArguments(args, this.VarDict);
 
             Assert.AreEqual("", response);
         }
@@ -75,7 +78,7 @@ namespace UnitTestProgrammingLanguage
 
             string[] args = { "badVar", "2" };
 
-            string response = command.validateArguments(args);
+            string response = command.validateArguments(args, this.VarDict);
 
             Assert.AreEqual("Invalid arguments, expecting circle <radius>", response);
         }
@@ -90,7 +93,7 @@ namespace UnitTestProgrammingLanguage
 
             string[] args = { "10" };
 
-            string response = command.validateArguments(args);
+            string response = command.validateArguments(args, this.VarDict);
 
             Assert.AreEqual("", response);
         }
@@ -105,7 +108,7 @@ namespace UnitTestProgrammingLanguage
 
             string[] args = { "badVar", "2" };
 
-            string response = command.validateArguments(args);
+            string response = command.validateArguments(args, this.VarDict);
 
             Assert.AreEqual("Invalid arguments, expecting triangle <width>,<height>", response);
         }
@@ -120,7 +123,7 @@ namespace UnitTestProgrammingLanguage
 
             string[] args = { "10", "20" };
 
-            string response = command.validateArguments(args);
+            string response = command.validateArguments(args, this.VarDict);
 
             Assert.AreEqual("", response);
         }
@@ -135,7 +138,7 @@ namespace UnitTestProgrammingLanguage
 
             string[] args = { "badVar", "2" };
 
-            string response = command.validateArguments(args);
+            string response = command.validateArguments(args, this.VarDict);
 
             Assert.AreEqual("Invalid arguments, expecting moveTo <X>,<Y>", response);
         }
@@ -150,7 +153,7 @@ namespace UnitTestProgrammingLanguage
 
             string[] args = { "10", "20" };
 
-            string response = command.validateArguments(args);
+            string response = command.validateArguments(args, this.VarDict);
 
             Assert.AreEqual("", response);
         }
@@ -166,7 +169,7 @@ namespace UnitTestProgrammingLanguage
             Command command = command = new MoveTo();
             string[] args = { "200", "300" };
 
-            command.ParseArguments(args);
+            command.ParseArguments(args, this.VarDict);
             command.Execute(canvas);
 
             Assert.AreEqual(200, canvas.xPos);
@@ -201,7 +204,7 @@ namespace UnitTestProgrammingLanguage
 
             string[] args = { "red" };
 
-            command.ParseArguments(args);
+            command.ParseArguments(args, this.VarDict);
             command.Execute(canvas);
 
             Assert.AreEqual(canvas.Pen.Color, Color.Red);

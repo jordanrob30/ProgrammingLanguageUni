@@ -60,6 +60,10 @@ namespace ProgrammingLanguageAssignment
                     arguments.Add(commandParts[1]); //variable
                     arguments.Add(commandParts[2]); //operand
                     arguments.Add(commandParts[3]); //value
+                } else if(this.command == "method")
+                {
+                    arguments.Clear();
+                    arguments.Add(commandParts[1]);
                 }
 
                 this.args = arguments.ToArray();
